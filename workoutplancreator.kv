@@ -1,0 +1,73 @@
+WindowManager:
+    WindowMain:
+    WindowCreatePlanStep1:
+
+
+
+<Button>:
+    font_size: 40
+    size_hint: 0.8,0.1
+
+<WindowMain>
+    name: "Main"
+    FloatLayout:
+        Button:
+            id: BtnCreateNew
+            background_color:
+            on_press: 0.1,0.1,0.5,1
+            pos_hint: {"x":0.1, "top":0.5}
+            text: "Create new Plan"
+            on_release:
+                app.root.current = "CreatePlanStep1"
+                root.manager.transition.direction = "left"
+        Button:
+            text: "Load existing Plan"
+            pos_hint: {"x":0.1, "top":0.35}
+        Button:
+            text: "History"
+            pos_hint: {"x":0.1, "top":0.15}
+
+
+<WindowCreatePlanStep1>
+    name: "CreatePlanStep1"
+    FloatLayout:
+        MDTextField:
+            id:TxtFieldName
+            hint_text:"Enter the Name of the Workout Plan"
+            mode:"rectangle"
+            pos_hint: {"x":0.1, "top": 0.9}
+            color: "black"
+            font_size: 40
+            size_hint: 0.8,0.15
+
+        Button:
+            id:BtnSelectDate
+            pos_hint: {"x":0.1, "top": 0.7}
+            text: "Select Date Range"
+            on_release: app.ShowDatePicker()
+
+        Label:
+            id:LblDateRange
+            text: "app.on_save()"
+            pos_hint: {"x":0.1, "top": 0.6}
+            color:"black"
+            font_size: 40
+            size_hint: 0.8,0.1
+
+        MDTextField:
+            id:TxtFieldNrUnits
+            hint_text:"Enter Number of Sessions per Day"
+            mode:"rectangle"
+            max_text_length:1
+            pos_hint: {"x":0.1, "top": 0.4}
+            color: "black"
+            font_size: 40
+            size_hint: 0.8,0.15
+
+        Button:
+            id: BtnBack1
+            pos_hint: {"x":0.1, "top":0.15}
+            text: "Back"
+            on_release:
+                app.root.current = "Main"
+                root.manager.transition.direction = "left"
